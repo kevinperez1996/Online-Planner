@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap link  -->
+    <!-- css link-->
+
+    <title>Welcome to the Gym</title>
+
+    <style>
+        .calendar {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+            size: 60%;
+        }
+        
+        .calendar .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            color: #1caff6;
+            text-align: center;
+            font-size: 14pt;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: 160px;
+            left: 0px;
+            z-index: 2000;
+        }
+        
+        .calendar .dropdown .dropdown-item {
+            cursor: pointer;
+            opacity: .7;
+            transition: .5s opacity;
+        }
+        
+        .calendar .dropdown .dropdown-item:hover {
+            opacity: 1;
+        }
+        
+        .calendar .years {
+            display: none;
+        }
+        
+        .calendar .title {
+            text-align: center;
+            font-size: 20pt;
+        }
+        
+        .calendar .calendar-btn {
+            float: left;
+            background-color: #24aeff;
+            color: white;
+            text-align: center;
+            font-size: 14pt;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            position: relative;
+            width: 20%;
+            cursor: pointer;
+            transition: .5s background-color;
+        }
+        
+        .calendar .calendar-btn:hover {
+            background-color: #1f71a1;
+        }
+        
+        .calendar .year-btn {
+            float: right;
+        }
+        
+        .calendar .calendar-dates .days .day {
+            float: left;
+            width: 14%;
+            padding: 1%;
+            font-size: 13pt;
+            text-align: center;
+            border: solid 1px #ddd;
+            box-sizing: border-box;
+        }
+        
+        .calendar .calendar-dates .days .day.blank {
+            background-color: white;
+            border: none;
+        }
+        
+        .calendar .calendar-dates .days .day.selected {
+            background-color: #1caff6;
+            color: white;
+            cursor: pointer;
+            opacity: .5;
+            transition: .5s opacity;
+        }
+        
+        .calendar .calendar-dates .days .day.selected:hover {
+            opacity: 1;
+        }
+        
+        .calendar .calendar-dates .days .day.label {
+            height: 40px;
+            background-color: white;
+            color: black;
+            border: none;
+            font-weight: bold;
+        }
+        
+        @media only screen and (max-width: 960px) {
+            .calendar {
+                width: 100%;
+                margin: 0px;
+                margin: 0px;
+                box-sizing: border-box;
+                position: relative;
+                left: 0px;
+            }
+        }
+    </style>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton%7CRoboto%7CStaatliches" media="all">
+    <script src="calendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Site Header -->
+    <header>
+        <!-- h1: The most important headline -->
+        <h1>Calendar</h1>
+    </header>
+    <div class="calendar" id="calendar">
+        <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+            <span id="curMonth">Nov</span>
+            <div id="months" class="months dropdown">
+                <div class="dropdown-item">Jan</div>
+                <div class="dropdown-item">Feb</div>
+                <div class="dropdown-item">Mar</div>
+                <div class="dropdown-item">Apr</div>
+                <div class="dropdown-item">May</div>
+                <div class="dropdown-item">Jun</div>
+                <div class="dropdown-item">Jul</div>
+                <div class="dropdown-item">Aug</div>
+                <div class="dropdown-item">Sep</div>
+                <div class="dropdown-item">Oct</div>
+                <div class="dropdown-item">Nov</div>
+                <div class="dropdown-item">Dec</div>
+            </div>
+        </div>
+
+        <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+            <span id="curYear">2019</span>
+            <div id="years" class="years dropdown" style="display: none;">
+                <div class="dropdown-item">2000</div>
+                <div class="dropdown-item">2001</div>
+                <div class="dropdown-item">2002</div>
+                <div class="dropdown-item">2003</div>
+                <div class="dropdown-item">2004</div>
+                <div class="dropdown-item">2005</div>
+                <div class="dropdown-item">2006</div>
+                <div class="dropdown-item">2007</div>
+                <div class="dropdown-item">2008</div>
+                <div class="dropdown-item">2009</div>
+                <div class="dropdown-item">2010</div>
+                <div class="dropdown-item">2011</div>
+                <div class="dropdown-item">2012</div>
+                <div class="dropdown-item">2013</div>
+                <div class="dropdown-item">2014</div>
+                <div class="dropdown-item">2015</div>
+                <div class="dropdown-item">2016</div>
+                <div class="dropdown-item">2017</div>
+                <div class="dropdown-item">2018</div>
+                <div class="dropdown-item">2019</div>
+                <div class="dropdown-item">2020</div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="calendar-dates">
+            <div class="days">
+                <div class="day label">SUN</div>
+                <div class="day label">MON</div>
+                <div class="day label">TUE</div>
+                <div class="day label">WED</div>
+                <div class="day label">THUR</div>
+                <div class="day label">FRI</div>
+                <div class="day label">SAT</div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div id="calendarDays" class="days">
+                <div class="day blank"></div>
+                <div class="day blank"></div>
+                <div class="day blank"></div>
+                <div class="day blank"></div>
+                <div class="day blank"></div>
+                <div id="calendarday_1" class="day" data-day="1">1</div>
+                <div id="calendarday_2" class="day" data-day="2">2</div>
+                <div id="calendarday_3" class="day" data-day="3">3</div>
+                <div id="calendarday_4" class="day" data-day="4">4</div>
+                <div id="calendarday_5" class="day" data-day="5">5</div>
+                <div id="calendarday_6" class="day" data-day="6">6</div>
+                <div id="calendarday_7" class="day" data-day="7">7</div>
+                <div id="calendarday_8" class="day" data-day="8">8</div>
+                <div id="calendarday_9" class="day" data-day="9">9</div>
+                <div id="calendarday_10" class="day" data-day="10">10</div>
+                <div id="calendarday_11" class="day" data-day="11">11</div>
+                <div id="calendarday_12" class="day" data-day="12">12</div>
+                <div id="calendarday_13" class="day" data-day="13">13</div>
+                <div id="calendarday_14" class="day" data-day="14">14</div>
+                <div id="calendarday_15" class="day" data-day="15">15</div>
+                <div id="calendarday_16" class="day" data-day="16">16</div>
+                <div id="calendarday_17" class="day" data-day="17">17</div>
+                <div id="calendarday_18" class="day" data-day="18">18</div>
+                <div id="calendarday_19" class="day" data-day="19">19</div>
+                <div id="calendarday_20" class="day" data-day="20">20</div>
+                <div id="calendarday_21" class="day" data-day="21">21</div>
+                <div id="calendarday_22" class="day" data-day="22">22</div>
+                <div id="calendarday_23" class="day" data-day="23">23</div>
+                <div id="calendarday_24" class="day" data-day="24">24</div>
+                <div id="calendarday_25" class="day" data-day="25">25</div>
+                <div id="calendarday_26" class="day" data-day="26">26</div>
+                <div id="calendarday_27" class="day" data-day="27">27</div>
+                <div id="calendarday_28" class="day" data-day="28">28</div>
+                <div id="calendarday_29" class="day" data-day="29">29</div>
+                <div id="calendarday_30" class="day" data-day="30">30</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
