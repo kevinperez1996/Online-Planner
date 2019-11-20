@@ -1,6 +1,6 @@
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var startYear = 2000;
-var endYear = 2020;
+var startYear = 2018;
+var endYear = 2025;
 var month = 0;
 var year = 0;
 var selectedDays = new Array();
@@ -8,7 +8,7 @@ var mousedown = false;
 var mousemove = false;
 
 function loadCalendarMonths() {
-    for (var i = 0; i < months.length; i++) {
+    for (var i = 0; i < 12; i++) {
         var doc = document.createElement("div");
         doc.innerHTML = months[i];
         doc.classList.add("dropdown-item");
@@ -68,6 +68,7 @@ function loadCalendarDays() {
         var d = document.createElement("div");
         d.id = "calendarday_" + tmp;
         d.className = "day";
+        d.id = (month + 1 + "/" + i + "/" + year);
         d.innerHTML = tmp;
         d.dataset.day = tmp;
 
