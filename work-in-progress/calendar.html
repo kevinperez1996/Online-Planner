@@ -110,6 +110,36 @@
             font-weight: bold;
         }
         
+        .event1 {
+            font-size: 10pt;
+            color: rgb(0, 68, 255);
+            float: left;
+        }
+        
+        .event2 {
+            font-size: 10pt;
+            color: red;
+            float: left;
+        }
+        
+        .event3 {
+            font-size: 10pt;
+            color: green;
+            float: left;
+        }
+        
+        .event4 {
+            font-size: 10pt;
+            color: Purple;
+            float: left;
+        }
+        
+        .event5 {
+            font-size: 10pt;
+            color: orangered;
+            float: left;
+        }
+        
         @media only screen and (max-width: 960px) {
             .calendar {
                 width: 100%;
@@ -140,7 +170,6 @@
         <h1>Calendar</h1>
     </header> -->
     <br>
-
     <div class="calendar" id="calendar">
         <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
             <span id="curMonth">Nov</span>
@@ -159,7 +188,6 @@
                 <div class="dropdown-item">Dec</div> -->
             </div>
         </div>
-
         <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
             <span id="curYear">2019</span>
             <div id="years" class="years dropdown" style="display: none;">
@@ -186,7 +214,6 @@
                 <div class="dropdown-item">2020</div>
             </div>
         </div>
-
         <div class="clear"></div>
         <br>
         <br>
@@ -202,7 +229,6 @@
 
                 <div class="clear"></div>
             </div>
-
             <div id="calendarDays" class="days">
                 <div class="day blank"></div>
                 <div class="day blank"></div>
@@ -243,11 +269,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add/Change Event</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -256,11 +282,11 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Event Name</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Event Name">
+                            <input type="email" class="form-control" id="eventName" placeholder="Event Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Type of Event</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="typeOfEvent">
                             <option>Birthday</option>
                             <option>Appointment</option>
                             <option>Work</option>
@@ -270,33 +296,85 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Frequency</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="freq">
                             <option>Once</option>
                             <option>Daily</option>
                             <option>Weekly</option>
                             <option>Monthly</option>
                             <option>Yearly</option>
-                            
                           </select>
                         </div>
                         <div class="form-group">
                             <label for="inputMDEx1">Time</label>
-                            <input type="time" id="inputMDEx1" class="form-control">
-
+                            <input type="time" id="timeOfDay" class="form-control">
                         </div>
-                        <div class="form-group ">
-                            <label for="exampleFormControlTextarea1 ">Comments</label>
-                            <textarea class="form-control " id="exampleFormControlTextarea1 " rows="3 "></textarea>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comments</label>
+                            <textarea class="form-control" id="comments" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer ">
-                    <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
-                    <button type="button " class="btn btn-primary " data-dismiss="modal">Save changes</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editModal" tabindex="1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Event Name</label>
+                            <input type="email" class="form-control" id="eventName" placeholder="Event Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Type of Event</label>
+                            <select class="form-control" id="typeOfEvent">
+                            <option>Birthday</option>
+                            <option>Appointment</option>
+                            <option>Work</option>
+                            <option>Personal</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Frequency</label>
+                            <select class="form-control" id="freq">
+                            <option>Once</option>
+                            <option>Daily</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Yearly</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMDEx1">Time</label>
+                            <input type="time" id="timeOfDay" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comments</label>
+                            <textarea class="form-control" id="comments" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary1" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
