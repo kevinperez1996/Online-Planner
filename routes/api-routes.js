@@ -49,4 +49,25 @@ module.exports = function(app) {
       });
     }
   });
+
+
+  app.get("/api/plans", function (req, res){
+    db.Plan.findAll({}).then(function (data){
+      res.json(data);
+    });
+  });
+
+  
+  app.post("/api/planner", function (req, res){
+    console.log(req.body);
+    db.Plan.create({
+      title: req.body.title,
+      category: req.body.category,
+      frequency: req.body.frequency,
+      time: req.body.time,
+      description: req.body.description
+    }).then(function (data){
+      res.json(data);
+    })
+  })
 };
