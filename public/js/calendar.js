@@ -1,16 +1,3 @@
-
-// This file just does a GET request to figure out which user is logged in
-// and updates the HTML on the page
-
-$(document).ready(function () {
-
-  $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email);
-  });
-
-});
-
-
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var startYear = 2018;
 var endYear = 2025;
@@ -19,130 +6,217 @@ var year = 0;
 var selectedDays = new Array();
 var mousedown = false;
 var mousemove = false;
+var eventName;
+var typeOfEvent;
+var freq;
+var timeOfDay;
+var comments;
 
 function loadCalendarMonths() {
-  for (var i = 0; i < 12; i++) {
-    var doc = document.createElement("div");
-    doc.innerHTML = months[i];
-    doc.classList.add("dropdown-item");
+    for (var i = 0; i < 12; i++) {
+        var doc = document.createElement("div");
+        doc.innerHTML = months[i];
+        doc.classList.add("dropdown-item");
 
-    doc.onclick = (function () {
-      var selectedMonth = i;
-      return function () {
-        month = selectedMonth;
-        document.getElementById("curMonth").innerHTML = months[month];
-        loadCalendarDays();
-        return month;
-      }
-    })();
+        doc.onclick = (function() {
+            var selectedMonth = i;
+            return function() {
+                month = selectedMonth;
+                document.getElementById("curMonth").innerHTML = months[month];
+                loadCalendarDays();
+                return month;
+            }
+        })();
 
-    document.getElementById("months").appendChild(doc);
-  }
+        document.getElementById("months").appendChild(doc);
+    }
 }
 
 function loadCalendarYears() {
-  document.getElementById("years").innerHTML = "";
+    document.getElementById("years").innerHTML = "";
 
-  for (var i = startYear; i <= endYear; i++) {
-    var doc = document.createElement("div");
-    doc.innerHTML = i;
-    doc.classList.add("dropdown-item");
+    for (var i = startYear; i <= endYear; i++) {
+        var doc = document.createElement("div");
+        doc.innerHTML = i;
+        doc.classList.add("dropdown-item");
 
-    doc.onclick = (function () {
-      var selectedYear = i;
-      return function () {
-        year = selectedYear;
-        document.getElementById("curYear").innerHTML = year;
-        loadCalendarDays();
-        return year;
-      }
-    })();
+        doc.onclick = (function() {
+            var selectedYear = i;
+            return function() {
+                year = selectedYear;
+                document.getElementById("curYear").innerHTML = year;
+                loadCalendarDays();
+                return year;
+            }
+        })();
 
-    document.getElementById("years").appendChild(doc);
-  }
+        document.getElementById("years").appendChild(doc);
+    }
 }
 var selectedEvent = "";
 
 function loadCalendarDays() {
-  document.getElementById("calendarDays").innerHTML = "";
+    document.getElementById("calendarDays").innerHTML = "";
 
-  var tmpDate = new Date(year, month, 0);
-  var num = daysInMonth(month, year);
-  var dayofweek = tmpDate.getDay(); // find where to start calendar day of week
+    var tmpDate = new Date(year, month, 0);
+    var num = daysInMonth(month, year);
+    var dayofweek = tmpDate.getDay(); // find where to start calendar day of week
 
-  for (var i = 0; i <= dayofweek; i++) {
-    var d = document.createElement("div");
-    d.classList.add("day");
-    d.classList.add("blank");
-    document.getElementById("calendarDays").appendChild(d);
-  }
+    for (var i = 0; i <= dayofweek; i++) {
+        var d = document.createElement("div");
+        d.classList.add("day");
+        d.classList.add("blank");
+        document.getElementById("calendarDays").appendChild(d);
+    }
 
-  for (var i = 0; i < num; i++) {
-    var tmp = i + 1;
-    var d = document.createElement("div");
-    d.id = "calendarday_" + tmp;
-    d.className = "day";
-    d.id = (month + 1 + "/" + (i + 1) + "/" + year);
-    d.setAttribute("data-toggle", "modal")
-    d.setAttribute("data-target", "#exampleModal")
-    d.innerHTML = tmp;
-    d.dataset.day = tmp;
+    for (var i = 0; i < num; i++) {
+        var tmp = i + 1;
+        var d = document.createElement("div");
+        d.id = "calendarday_" + tmp;
+        d.className = "day";
+        d.id = (month + 1 + "-" + (i + 1) + "-" + year);
+        d.setAttribute("data-toggle", "modal")
+        d.setAttribute("data-target", "#exampleModal")
+        d.innerHTML = tmp;
+        d.dataset.day = tmp;
 
-    d.addEventListener('click', function () {
-      this.classList.toggle('selected');
-      selectedEvent = this.id
-      alert(selectedEvent)
-      if (!selectedDays.includes(this.dataset.day))
-        selectedDays.push(this.dataset.day);
+        d.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            selectedEvent = this.id
+                // alert(selectedEvent)
+            if (!selectedDays.includes(this.dataset.day))
+                selectedDays.push(this.dataset.day);
 
-      else
-        selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
-    });
+            else
+                selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
+        });
 
-    d.addEventListener('mousemove', function (e) {
-      e.preventDefault();
-      if (mousedown) {
-        this.classList.add('selected');
+        // d.addEventListener('mousemove', function(e) {
+        //     e.preventDefault();
+        //     if (mousedown) {
+        //         this.classList.add('selected');
 
-        if (!selectedDays.includes(this.dataset.day))
-          selectedDays.push(this.dataset.day);
-      }
-    });
+        //         if (!selectedDays.includes(this.dataset.day))
+        //             selectedDays.push(this.dataset.day);
+        //     }
+        // });
 
-    d.addEventListener('mousedown', function (e) {
-      e.preventDefault();
-      mousedown = true;
-    });
+        // d.addEventListener('mousedown', function(e) {
+        //     e.preventDefault();
+        //     mousedown = true;
+        // });
 
-    d.addEventListener('mouseup', function (e) {
-      e.preventDefault();
-      mousedown = false;
-    });
+        // d.addEventListener('mouseup', function(e) {
+        //     e.preventDefault();
+        //     mousedown = false;
+        // });
 
-    document.getElementById("calendarDays").appendChild(d);
-  }
+        document.getElementById("calendarDays").appendChild(d);
+    }
 
-  var clear = document.createElement("div");
-  clear.className = "clear";
-  document.getElementById("calendarDays").appendChild(clear);
+    var clear = document.createElement("div");
+    clear.className = "clear";
+    document.getElementById("calendarDays").appendChild(clear);
 }
+var i = 0;
 
 function daysInMonth(month, year) {
-  var d = new Date(year, month + 1, 0);
-  return d.getDate();
+    var d = new Date(year, month + 1, 0);
+    return d.getDate();
 }
-$(document).on("click", ".btn-primary, .btn-secondary", function prompt() {
-  selectedEvent = "";
-  console.log(selectedEvent)
+$(document).on("click", ".btn-primary", function prompt() {
+    eventName = $("#eventName").val();
+    typeOfEvent = $("#typeOfEvent").val();
+    freq = $("#freq").val();
+    timeOfDay = $("#timeOfDay").val();
+    comments = $("#comments").val();
+
+    switch (typeOfEvent) {
+        case "Birthday":
+            $("#" + selectedEvent).append("<br><div class='event1' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Appointment":
+            $("#" + selectedEvent).append("<br><div class='event2' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Work":
+            $("#" + selectedEvent).append("<br><div class='event3' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Personal":
+            $("#" + selectedEvent).append("<br><div class='event4' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Other":
+            $("#" + selectedEvent).append("<br><div class='event5' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        default:
+            break;
+    }
+
+    selectedEvent = "";
+
 
 })
-window.addEventListener('load', function () {
-  var date = new Date();
-  month = date.getMonth();
-  year = date.getFullYear();
-  document.getElementById("curMonth").innerHTML = months[month];
-  document.getElementById("curYear").innerHTML = year;
-  loadCalendarMonths();
-  loadCalendarYears();
-  loadCalendarDays();
+$(document).on("click", ".btn-secondary", function() {
+    selectedEvent = "";
+
+
+})
+var editEvent;
+$(document).on("click", ".event1, .event2, .event3, .event4, .event5", function() {
+    document.onclick = function() {
+        $("#exampleModal").hide()
+        $('.modal-backdrop').hide();
+
+    }
+    editEvent = $(this).attr("id");
+
+
+})
+
+
+$(document).on("click", ".btn-primary1", function() {
+    eventName = $("#eventName2").val();
+    typeOfEvent = $("#typeOfEvent2").val();
+    freq = $("#freq2").val();
+    timeOfDay = $("#timeOfDay2").val();
+    comments = $("#comments2").val();
+
+    switch (typeOfEvent) {
+        case "Birthday":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+            $("#" + editEvent).attr('class', 'event1');
+            break;
+        case "Appointment":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+            $("#" + editEvent).attr('class', 'event2');
+            break;
+        case "Work":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+            $("#" + editEvent).attr('class', 'event3');
+            break;
+        case "Personal":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+            $("#" + editEvent).attr('class', 'event4');
+            break;
+        case "Other":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+            $("#" + editEvent).attr('class', 'event5');
+            break;
+        default:
+            break;
+    }
+})
+window.addEventListener('load', function() {
+    var date = new Date();
+    month = date.getMonth();
+    year = date.getFullYear();
+    document.getElementById("curMonth").innerHTML = months[month];
+    document.getElementById("curYear").innerHTML = year;
+    loadCalendarMonths();
+    loadCalendarYears();
+    loadCalendarDays();
 });
