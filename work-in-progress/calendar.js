@@ -69,7 +69,7 @@ function loadCalendarDays() {
         var d = document.createElement("div");
         d.id = "calendarday_" + tmp;
         d.className = "day";
-        d.id = (month + 1 + "/" + (i + 1) + "/" + year);
+        d.id = (month + 1 + "-" + (i + 1) + "-" + year);
         d.setAttribute("data-toggle", "modal")
         d.setAttribute("data-target", "#exampleModal")
         d.innerHTML = tmp;
@@ -78,7 +78,7 @@ function loadCalendarDays() {
         d.addEventListener('click', function() {
             this.classList.toggle('selected');
             selectedEvent = this.id
-            alert(selectedEvent)
+                // alert(selectedEvent)
             if (!selectedDays.includes(this.dataset.day))
                 selectedDays.push(this.dataset.day);
 
@@ -86,25 +86,25 @@ function loadCalendarDays() {
                 selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
         });
 
-        d.addEventListener('mousemove', function(e) {
-            e.preventDefault();
-            if (mousedown) {
-                this.classList.add('selected');
+        // d.addEventListener('mousemove', function(e) {
+        //     e.preventDefault();
+        //     if (mousedown) {
+        //         this.classList.add('selected');
 
-                if (!selectedDays.includes(this.dataset.day))
-                    selectedDays.push(this.dataset.day);
-            }
-        });
+        //         if (!selectedDays.includes(this.dataset.day))
+        //             selectedDays.push(this.dataset.day);
+        //     }
+        // });
 
-        d.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            mousedown = true;
-        });
+        // d.addEventListener('mousedown', function(e) {
+        //     e.preventDefault();
+        //     mousedown = true;
+        // });
 
-        d.addEventListener('mouseup', function(e) {
-            e.preventDefault();
-            mousedown = false;
-        });
+        // d.addEventListener('mouseup', function(e) {
+        //     e.preventDefault();
+        //     mousedown = false;
+        // });
 
         document.getElementById("calendarDays").appendChild(d);
     }
@@ -113,15 +113,97 @@ function loadCalendarDays() {
     clear.className = "clear";
     document.getElementById("calendarDays").appendChild(clear);
 }
+var i = 0;
 
 function daysInMonth(month, year) {
     var d = new Date(year, month + 1, 0);
     return d.getDate();
 }
-$(document).on("click", ".btn-primary, .btn-secondary", function prompt() {
-    selectedEvent = "";
-    console.log(selectedEvent)
+$(document).on("click", ".btn-primary", function prompt() {
+    var eventName = $("#eventName").val();
+    var typeOfEvent = $("#typeOfEvent").val();
+    var freq = $("#freq").val();
+    var timeOfDay = $("#timeOfDay").val();
+    var comments = $("#comments").val();
 
+    switch (typeOfEvent) {
+        case "Birthday":
+            $("#" + selectedEvent).append("<br><div class='event1' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Appointment":
+            $("#" + selectedEvent).append("<br><div class='event2' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Work":
+            $("#" + selectedEvent).append("<br><div class='event3' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Personal":
+            $("#" + selectedEvent).append("<br><div class='event4' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        case "Other":
+            $("#" + selectedEvent).append("<br><div class='event5' id='event" + i + "' data-toggle='modal' data-target='#editModal'>" + eventName + " | " + timeOfDay + "</div>");
+            i++;
+            break;
+        default:
+            break;
+    }
+
+    selectedEvent = "";
+
+
+})
+$(document).on("click", ".btn-secondary", function() {
+    selectedEvent = "";
+
+
+})
+var editEvent;
+$(document).on("click", ".event1, .event2, .event3, .event4, .event5", function() {
+    document.onclick = function() {
+        $("#exampleModal").hide()
+        $('.modal-backdrop').hide();
+
+    }
+    editEvent = $(this).attr("id");
+
+
+})
+
+
+$(document).on("click", ".btn-primary1", function() {
+    var eventName = $("#eventName2").val();
+    var typeOfEvent = $("#typeOfEvent2").val();
+    var freq = $("#freq2").val();
+    var timeOfDay = $("#timeOfDay2").val();
+    var comments = $("#comments2").val();
+
+    switch (typeOfEvent) {
+        case "Birthday":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+
+            break;
+        case "Appointment":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+
+            break;
+        case "Work":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+
+            break;
+        case "Personal":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+
+            break;
+        case "Other":
+            $("#" + editEvent).text(eventName + " | " + timeOfDay);
+
+            break;
+        default:
+            break;
+    }
 })
 window.addEventListener('load', function() {
     var date = new Date();
