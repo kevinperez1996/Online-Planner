@@ -174,11 +174,11 @@ $(document).on("click", ".event1, .event2, .event3, .event4, .event5", function(
 
 
 $(document).on("click", ".btn-primary1", function() {
-    var eventName = $("#eventName2").val();
-    var typeOfEvent = $("#typeOfEvent2").val();
-    var freq = $("#freq2").val();
-    var timeOfDay = $("#timeOfDay2").val();
-    var comments = $("#comments2").val();
+    var eventName = $("#eventName").val();
+    var typeOfEvent = $("#typeOfEvent").val();
+    var freq = $("#freq").val();
+    var timeOfDay = $("#timeOfDay").val();
+    var comments = $("#comments").val();
 
     switch (typeOfEvent) {
         case "Birthday":

@@ -1,4 +1,3 @@
- 
  .calendar .dropdown {
      display: none;
      position: absolute;
@@ -101,4 +100,33 @@
          left: 0px;
      }
  }
-
+ 
+ .event1 {
+     font-size: 10pt;
+     color: rgb(0, 68, 255);
+     float: left;
+ }
+ 
+ .event2 {
+     font-size: 10pt;
+     color: red;
+     float: left;
+ }
+ 
+ .event3 {
+     font-size: 10pt;
+     color: green;
+     float: left;
+ }
+ 
+ .event4 {
+     font-size: 10pt;
+     color: Purple;
+     float: left;
+ }
+ 
+ .event5 {
+     font-size: 10pt;
+     color: orangered;
+     float: left;
+ }
