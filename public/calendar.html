@@ -11,10 +11,18 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/calendar.css">
 
+  <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script> -->
+
   <title>Online Planner</title>
 </head>
 
 <body>
+
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -24,14 +32,15 @@
       </div>
     </div>
   </nav>
-  
-  <br>
 
-  <div class="calendar" id="calendar">
-    <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
-      <span id="curMonth">Nov</span>
-      <div id="months" class="months dropdown">
-        <!-- <div class="dropdown-item">Jan</div>
+  <br>
+  <div class="container">
+
+    <div class="calendar" id="calendar">
+      <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+        <span id="curMonth">Nov</span>
+        <div id="months" class="months dropdown">
+          <!-- <div class="dropdown-item">Jan</div>
                 <div class="dropdown-item">Feb</div>
                 <div class="dropdown-item">Mar</div>
                 <div class="dropdown-item">Apr</div>
@@ -43,165 +52,169 @@
                 <div class="dropdown-item">Oct</div>
                 <div class="dropdown-item">Nov</div>
                 <div class="dropdown-item">Dec</div> -->
-      </div>
-    </div>
-
-    <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
-      <span id="curYear">2019</span>
-      <div id="years" class="years dropdown" style="display: none;">
-        <div class="dropdown-item">2000</div>
-        <div class="dropdown-item">2001</div>
-        <div class="dropdown-item">2002</div>
-        <div class="dropdown-item">2003</div>
-        <div class="dropdown-item">2004</div>
-        <div class="dropdown-item">2005</div>
-        <div class="dropdown-item">2006</div>
-        <div class="dropdown-item">2007</div>
-        <div class="dropdown-item">2008</div>
-        <div class="dropdown-item">2009</div>
-        <div class="dropdown-item">2010</div>
-        <div class="dropdown-item">2011</div>
-        <div class="dropdown-item">2012</div>
-        <div class="dropdown-item">2013</div>
-        <div class="dropdown-item">2014</div>
-        <div class="dropdown-item">2015</div>
-        <div class="dropdown-item">2016</div>
-        <div class="dropdown-item">2017</div>
-        <div class="dropdown-item">2018</div>
-        <div class="dropdown-item">2019</div>
-        <div class="dropdown-item">2020</div>
-      </div>
-    </div>
-
-    <div class="clear"></div>
-    <br>
-    <br>
-    <div class="calendar-dates">
-      <div class="days">
-        <div class="day label">SUN</div>
-        <div class="day label">MON</div>
-        <div class="day label">TUE</div>
-        <div class="day label">WED</div>
-        <div class="day label">THUR</div>
-        <div class="day label">FRI</div>
-        <div class="day label">SAT</div>
-
-        <div class="clear"></div>
-      </div>
-
-      <div id="calendarDays" class="days">
-        <div class="day blank"></div>
-        <div class="day blank"></div>
-        <div class="day blank"></div>
-        <div class="day blank"></div>
-        <div class="day blank"></div>
-        <div id="calendarday_1" class="day" data-day="1">1</div>
-        <div id="calendarday_2" class="day" data-day="2">2</div>
-        <div id="calendarday_3" class="day" data-day="3">3</div>
-        <div id="calendarday_4" class="day" data-day="4">4</div>
-        <div id="calendarday_5" class="day" data-day="5">5</div>
-        <div id="calendarday_6" class="day" data-day="6">6</div>
-        <div id="calendarday_7" class="day" data-day="7">7</div>
-        <div id="calendarday_8" class="day" data-day="8">8</div>
-        <div id="calendarday_9" class="day" data-day="9">9</div>
-        <div id="calendarday_10" class="day" data-day="10">10</div>
-        <div id="calendarday_11" class="day" data-day="11">11</div>
-        <div id="calendarday_12" class="day" data-day="12">12</div>
-        <div id="calendarday_13" class="day" data-day="13">13</div>
-        <div id="calendarday_14" class="day" data-day="14">14</div>
-        <div id="calendarday_15" class="day" data-day="15">15</div>
-        <div id="calendarday_16" class="day" data-day="16">16</div>
-        <div id="calendarday_17" class="day" data-day="17">17</div>
-        <div id="calendarday_18" class="day" data-day="18">18</div>
-        <div id="calendarday_19" class="day" data-day="19">19</div>
-        <div id="calendarday_20" class="day" data-day="20">20</div>
-        <div id="calendarday_21" class="day" data-day="21">21</div>
-        <div id="calendarday_22" class="day" data-day="22">22</div>
-        <div id="calendarday_23" class="day" data-day="23">23</div>
-        <div id="calendarday_24" class="day" data-day="24">24</div>
-        <div id="calendarday_25" class="day" data-day="25">25</div>
-        <div id="calendarday_26" class="day" data-day="26">26</div>
-        <div id="calendarday_27" class="day" data-day="27">27</div>
-        <div id="calendarday_28" class="day" data-day="28">28</div>
-        <div id="calendarday_29" class="day" data-day="29">29</div>
-        <div id="calendarday_30" class="day" data-day="30">30</div>
-        <div class="clear"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add/Change Event</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Event Name</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Event Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Type of Event</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Birthday</option>
-                <option>Appointment</option>
-                <option>Work</option>
-                <option>Personal</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Frequency</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Once</option>
-                <option>Daily</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-                <option>Yearly</option>
+      </div>
 
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputMDEx1">Time</label>
-              <input type="time" id="inputMDEx1" class="form-control">
+      <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+        <span id="curYear">2019</span>
+        <div id="years" class="years dropdown" style="display: none;">
+          <div class="dropdown-item">2000</div>
+          <div class="dropdown-item">2001</div>
+          <div class="dropdown-item">2002</div>
+          <div class="dropdown-item">2003</div>
+          <div class="dropdown-item">2004</div>
+          <div class="dropdown-item">2005</div>
+          <div class="dropdown-item">2006</div>
+          <div class="dropdown-item">2007</div>
+          <div class="dropdown-item">2008</div>
+          <div class="dropdown-item">2009</div>
+          <div class="dropdown-item">2010</div>
+          <div class="dropdown-item">2011</div>
+          <div class="dropdown-item">2012</div>
+          <div class="dropdown-item">2013</div>
+          <div class="dropdown-item">2014</div>
+          <div class="dropdown-item">2015</div>
+          <div class="dropdown-item">2016</div>
+          <div class="dropdown-item">2017</div>
+          <div class="dropdown-item">2018</div>
+          <div class="dropdown-item">2019</div>
+          <div class="dropdown-item">2020</div>
+        </div>
+      </div>
 
+      <div class="clear"></div>
+      <br>
+      <br>
+      <div class="calendar-dates">
+        <div class="days">
+          <div class="day label">SUN</div>
+          <div class="day label">MON</div>
+          <div class="day label">TUE</div>
+          <div class="day label">WED</div>
+          <div class="day label">THUR</div>
+          <div class="day label">FRI</div>
+          <div class="day label">SAT</div>
+
+          <div class="clear"></div>
+        </div>
+
+        <div id="calendarDays" class="days">
+          <div class="day blank"></div>
+          <div class="day blank"></div>
+          <div class="day blank"></div>
+          <div class="day blank"></div>
+          <div class="day blank"></div>
+          <div id="calendarday_1" class="day" data-day="1">1</div>
+          <div id="calendarday_2" class="day" data-day="2">2</div>
+          <div id="calendarday_3" class="day" data-day="3">3</div>
+          <div id="calendarday_4" class="day" data-day="4">4</div>
+          <div id="calendarday_5" class="day" data-day="5">5</div>
+          <div id="calendarday_6" class="day" data-day="6">6</div>
+          <div id="calendarday_7" class="day" data-day="7">7</div>
+          <div id="calendarday_8" class="day" data-day="8">8</div>
+          <div id="calendarday_9" class="day" data-day="9">9</div>
+          <div id="calendarday_10" class="day" data-day="10">10</div>
+          <div id="calendarday_11" class="day" data-day="11">11</div>
+          <div id="calendarday_12" class="day" data-day="12">12</div>
+          <div id="calendarday_13" class="day" data-day="13">13</div>
+          <div id="calendarday_14" class="day" data-day="14">14</div>
+          <div id="calendarday_15" class="day" data-day="15">15</div>
+          <div id="calendarday_16" class="day" data-day="16">16</div>
+          <div id="calendarday_17" class="day" data-day="17">17</div>
+          <div id="calendarday_18" class="day" data-day="18">18</div>
+          <div id="calendarday_19" class="day" data-day="19">19</div>
+          <div id="calendarday_20" class="day" data-day="20">20</div>
+          <div id="calendarday_21" class="day" data-day="21">21</div>
+          <div id="calendarday_22" class="day" data-day="22">22</div>
+          <div id="calendarday_23" class="day" data-day="23">23</div>
+          <div id="calendarday_24" class="day" data-day="24">24</div>
+          <div id="calendarday_25" class="day" data-day="25">25</div>
+          <div id="calendarday_26" class="day" data-day="26">26</div>
+          <div id="calendarday_27" class="day" data-day="27">27</div>
+          <div id="calendarday_28" class="day" data-day="28">28</div>
+          <div id="calendarday_29" class="day" data-day="29">29</div>
+          <div id="calendarday_30" class="day" data-day="30">30</div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div class = "testDiv"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add/Change Event</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Event Name</label>
+                <textarea class="form-control" id="title" rows="1"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Type of Event</label>
+                <select class="form-control" id="type">
+                  <option>Birthday</option>
+                  <option>Appointment</option>
+                  <option>Work</option>
+                  <option>Personal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Frequency</label>
+                <select class="form-control" id="frequency">
+                  <option>Once</option>
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Monthly</option>
+                  <option>Yearly</option>
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputMDEx1">Time</label>
+                <input type="time" id="time" class="form-control">
+
+              </div>
+              <div class="form-group ">
+                <label for="exampleFormControlTextarea1 ">Comments</label>
+                <textarea class="form-control " id="comments" rows="3 "></textarea>
+              </div>
             </div>
-            <div class="form-group ">
-              <label for="exampleFormControlTextarea1 ">Comments</label>
-              <textarea class="form-control " id="exampleFormControlTextarea1 " rows="3 "></textarea>
+            <div class="modal-footer ">
+              <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
             </div>
           </form>
         </div>
-        <div class="modal-footer ">
-          <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
-          <button type="button " class="btn btn-primary " data-dismiss="modal">Save changes</button>
-        </div>
       </div>
     </div>
+
   </div>
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="jquery-3.4.1.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
   <script async="" src="//www.google-analytics.com/analytics.js"></script>
-  <script src="js/calendar.js"></script>
 
+
+  <script src="js/calendarAjax.js"></script>
+  <script src="js/calendar.js"></script>
 </body>
 
 
