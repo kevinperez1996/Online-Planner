@@ -162,17 +162,23 @@ $(document).on("click", ".btn-secondary", function() {
 })
 var editEvent;
 $(document).on("click", ".event1, .event2, .event3, .event4, .event5", function() {
+    document.onclick = function() {
+        $("#exampleModal").hide()
+        $('.modal-backdrop').hide();
+
+    }
     editEvent = $(this).attr("id");
 
 
 })
 
+
 $(document).on("click", ".btn-primary1", function() {
-    var eventName = $("#eventName").val();
-    var typeOfEvent = $("#typeOfEvent").val();
-    var freq = $("#freq").val();
-    var timeOfDay = $("#timeOfDay").val();
-    var comments = $("#comments").val();
+    var eventName = $("#eventName2").val();
+    var typeOfEvent = $("#typeOfEvent2").val();
+    var freq = $("#freq2").val();
+    var timeOfDay = $("#timeOfDay2").val();
+    var comments = $("#comments2").val();
 
     switch (typeOfEvent) {
         case "Birthday":

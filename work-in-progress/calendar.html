@@ -8,7 +8,7 @@
     <!-- bootstrap link  -->
     <!-- css link-->
 
-    <title>Welcome to the Gym</title>
+    <title>Online Planner</title>
 
     <style>
         /* .calendar {
@@ -151,6 +151,7 @@
             }
         }
     </style>
+
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton%7CRoboto%7CStaatliches" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -163,12 +164,7 @@
 </head>
 
 <body>
-    <!-- 
 
-    <header>
-     
-        <h1>Calendar</h1>
-    </header> -->
     <br>
     <div class="calendar" id="calendar">
         <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
@@ -269,7 +265,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -322,7 +318,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editModal" tabindex="1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -335,11 +331,11 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Event Name</label>
-                            <input type="email" class="form-control" id="eventName" placeholder="Event Name">
+                            <input type="email" class="form-control" id="eventName2" placeholder="Event Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Type of Event</label>
-                            <select class="form-control" id="typeOfEvent">
+                            <select class="form-control" id="typeOfEvent2">
                             <option>Birthday</option>
                             <option>Appointment</option>
                             <option>Work</option>
@@ -349,7 +345,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Frequency</label>
-                            <select class="form-control" id="freq">
+                            <select class="form-control" id="freq2">
                             <option>Once</option>
                             <option>Daily</option>
                             <option>Weekly</option>
@@ -359,11 +355,11 @@
                         </div>
                         <div class="form-group">
                             <label for="inputMDEx1">Time</label>
-                            <input type="time" id="timeOfDay" class="form-control">
+                            <input type="time" id="timeOfDay2" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Comments</label>
-                            <textarea class="form-control" id="comments" rows="3"></textarea>
+                            <textarea class="form-control" id="comments2" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
