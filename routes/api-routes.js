@@ -57,17 +57,41 @@ module.exports = function(app) {
     });
   });
 
-  
+
   app.post("/api/planner", function (req, res){
     console.log(req.body);
     db.Plan.create({
       title: req.body.title,
-      category: req.body.category,
-      frequency: req.body.frequency,
+      type: req.body.type,
       time: req.body.time,
-      description: req.body.description
+      description: req.body.description,
+      eventDate: req.body.eventDate
     }).then(function (data){
       res.json(data);
     })
   })
+  
+  app.delete("/api/plans/:id", function(req, res) {
+    db.Plan.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.put("/api/plans", function(req, res) {
+    console.log(req.body);
+    db.Plan.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(data) {
+        res.json(data);
+      });
+  });
 };

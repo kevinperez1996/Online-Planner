@@ -138,7 +138,7 @@
         </div>
       </div>
     </div>
-    <div class = "testDiv"></div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -168,17 +168,6 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Frequency</label>
-                <select class="form-control" id="frequency">
-                  <option>Once</option>
-                  <option>Daily</option>
-                  <option>Weekly</option>
-                  <option>Monthly</option>
-                  <option>Yearly</option>
-
-                </select>
-              </div>
-              <div class="form-group">
                 <label for="inputMDEx1">Time</label>
                 <input type="time" id="time" class="form-control">
 
@@ -187,19 +176,74 @@
                 <label for="exampleFormControlTextarea1 ">Comments</label>
                 <textarea class="form-control " id="comments" rows="3 "></textarea>
               </div>
-            </div>
-            <div class="modal-footer ">
-              <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" id="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-            </div>
+          </div>
+          <div class="modal-footer ">
+            <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          </div>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal 2 -->
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Event Name</label>
+                <textarea class="form-control" id="title2" rows="1"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Type of Event</label>
+                <select class="form-control" id="type2">
+                  <option>Birthday</option>
+                  <option>Appointment</option>
+                  <option>Work</option>
+                  <option>Personal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputMDEx1">Time</label>
+                <input type="time" id="time2" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comments</label>
+                <textarea class="form-control" id="comments2" rows="3"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary1" id="edit2" data-dismiss="modal">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
+  <br>
 
+  <div class="container">
+    <div class="row">
+      <div class="testDiv"></div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

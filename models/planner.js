@@ -9,12 +9,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     type: {
-      type: DataTypes.STRING,
-      defaultValue: "Work"
-    },
-    frequency: {
-      type: DataTypes.STRING,
-      defaultValue: "Once"  
+      type: DataTypes.STRING
     },
     time: {
       type: DataTypes.STRING,
@@ -29,6 +24,9 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    eventDate: {
+      type: DataTypes.STRING,
     }
   });
   return Plan;
