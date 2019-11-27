@@ -51,8 +51,24 @@ module.exports = function(app) {
   });
 
 
-  app.get("/api/plans", function (req, res){
-    db.Plan.findAll({}).then(function (data){
+  app.get("/api/plans/", function (req, res){
+
+    console.log("This is the user id:")
+    console.log(req.user.id);
+
+  // This makes sure you only get the correct person's plans 
+
+  // var query = {};
+  // if (req.user.id) {
+  //   query.UserId = req.user.id;
+  // }
+    db.Plan.findAll({
+      where: {
+        id: req.user.id
+      },
+      include: [db.User]
+    }).then(function (data){
+      console.log(data);
       res.json(data);
     });
   });

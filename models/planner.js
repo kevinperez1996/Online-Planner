@@ -29,6 +29,21 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     }
   });
+
+  Plan.associate = function(models) {
+    Plan.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+        foreignKey: 'id'
+      }
+    });
+  };
+  // Plan.belongsTo(User, {foreignKey: 'user_id'})
+
+  // Plan.associate = function(models) {
+  //   Plan.belongsTo(User, {foreignKey: 'user_id'})
+  // };
+
   return Plan;
 };
 

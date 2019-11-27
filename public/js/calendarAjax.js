@@ -7,26 +7,37 @@ var timeInput = $("#time");
 var commentsInput = $("#comments");
 var currentID = 0;
 
-$(document).on("click", ".delete", function deletePlan () {
-    
+var currentUser = "";
+
+    $(document).ready(function () {
+        $.get("/api/user_data").then(function (data) {
+            currentUser = data.id;
+            console.log(currentUser);
+            return currentUser;
+        });
+    });
+
+
+$(document).on("click", ".delete", function deletePlan() {
+
     var currentPlan = $(this).attr("id");
 
     alert("deleted");
     console.log(currentPlan)
-    
+
     $.ajax({
         method: "DELETE",
         url: "/api/plans/" + currentPlan
     })
-    .then(function () {
-        getPlans();
-    });
-    
+        .then(function () {
+            getPlans();
+        });
+
 });
 
 
-$(document).on("click", "#edit2", function editPlan () {
-    
+$(document).on("click", "#edit2", function editPlan() {
+
     console.log(currentID);
 
     var newPlan = {
@@ -37,26 +48,29 @@ $(document).on("click", "#edit2", function editPlan () {
         eventDate: selectedEvent,
         id: currentID
     }
-    
-        $.ajax({
-          method: "PUT",
-          url: "/api/plans",
-          data: newPlan
-        })
-          .then(function() {
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/plans",
+        data: newPlan
+    })
+        .then(function () {
             getPlans();
-          });
+        });
 });
- 
+
 
 $("#save").on("click", function (event) {
+
     event.preventDefault();
+
     var newPlan = {
         title: $("#title").val().trim(),
         type: $("#type").val().trim(),
         time: $("#time").val().trim(),
         description: $("#comments").val().trim(),
-        eventDate: selectedEvent
+        eventDate: selectedEvent,
+        UserId: currentUser
     }
 
     console.log(newPlan);
@@ -80,7 +94,8 @@ function getPlans() {
         console.log(data);
         initializeRows(data);
 
-    })
+    });
+
 }
 
 getPlans();
@@ -88,16 +103,16 @@ getPlans();
 function initializeRows(data) {
     $(".testDiv").empty();
     var dataSet = [];
-    
+
     for (var i = 0; i < data.length; i++) {
-        
+
         dataSet.push(createNewRow(data[i]));
     }
-    
+
     $(".testDiv").append(dataSet);
 }
 
-$(document).on("click", ".edit", function (){
+$(document).on("click", ".edit", function () {
     currentID = $(this).attr("id");
 })
 
@@ -124,9 +139,9 @@ function createNewRow(data) {
     deleteBtn.attr("id", data.id);
     var editBtn = $("<button>");
     editBtn.attr("data-toggle", "modal"),
-    editBtn.attr("id", data.id);
+        editBtn.attr("id", data.id);
     editBtn.attr("data-target", "#editModal"),
-    editBtn.text("EDIT");
+        editBtn.text("EDIT");
     editBtn.addClass("edit btn btn-default");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
