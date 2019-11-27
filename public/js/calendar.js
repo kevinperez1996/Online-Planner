@@ -91,7 +91,7 @@ function loadCalendarDays() {
     d.addEventListener('click', function () {
       this.classList.toggle('selected');
       selectedEvent = this.id
-      alert(selectedEvent)
+      alert(selectedEvent) 
       if (!selectedDays.includes(this.dataset.day))
         selectedDays.push(this.dataset.day);
 
