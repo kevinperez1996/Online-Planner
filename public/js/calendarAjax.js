@@ -69,8 +69,7 @@ $("#save").on("click", function (event) {
         type: $("#type").val().trim(),
         time: $("#time").val().trim(),
         description: $("#comments").val().trim(),
-        eventDate: selectedEvent,
-        UserId: currentUser
+        eventDate: selectedEvent
     }
 
     console.log(newPlan);
@@ -138,19 +137,11 @@ function createNewRow(data) {
     deleteBtn.addClass("delete btn btn-danger");
     deleteBtn.attr("id", data.id);
     var editBtn = $("<button>");
-<<<<<<< Updated upstream
-    editBtn.attr("data-toggle", "modal"),
-        editBtn.attr("id", data.id);
-    editBtn.attr("data-target", "#editModal"),
-        editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-default");
-=======
     editBtn.attr("data-toggle", "modal");
     editBtn.attr("id", data.id);
     editBtn.attr("data-target", "#editModal");
     editBtn.text("EDIT");
     editBtn.addClass("edit btn btn-secondary");
->>>>>>> Stashed changes
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostCategory = $("<h5>");
