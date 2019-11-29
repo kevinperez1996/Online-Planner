@@ -138,21 +138,23 @@ function createNewRow(data) {
     deleteBtn.addClass("delete btn btn-danger");
     deleteBtn.attr("id", data.id);
     var editBtn = $("<button>");
+<<<<<<< Updated upstream
     editBtn.attr("data-toggle", "modal"),
         editBtn.attr("id", data.id);
     editBtn.attr("data-target", "#editModal"),
         editBtn.text("EDIT");
     editBtn.addClass("edit btn btn-default");
+=======
+    editBtn.attr("data-toggle", "modal");
+    editBtn.attr("id", data.id);
+    editBtn.attr("data-target", "#editModal");
+    editBtn.text("EDIT");
+    editBtn.addClass("edit btn btn-secondary");
+>>>>>>> Stashed changes
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostCategory = $("<h5>");
     newPostCategory.text(data.type);
-    newPostCategory.css({
-        float: "right",
-        "font-weight": "700",
-        "margin-top":
-            "-15px"
-    });
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");

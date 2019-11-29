@@ -2,10 +2,15 @@
 
 body {
   font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+<<<<<<< Updated upstream
 
 }
  
  
+=======
+}
+
+>>>>>>> Stashed changes
  .calendar .dropdown {
      display: none;
      position: absolute;
@@ -107,5 +112,16 @@ body {
          position: relative;
          left: 0px;
      }
+ }
+
+ button {
+     float: right;
+     margin-left: 10px;
+ }
+ .card {
+     margin: 20px 0;
+ }
+ .testDiv {
+    margin-right: 10px;
  }
 
