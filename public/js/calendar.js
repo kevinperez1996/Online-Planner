@@ -82,7 +82,6 @@ function loadCalendarDays() {
     d.addEventListener('click', function () {
       this.classList.toggle('selected');
       selectedEvent = this.id
-      alert(selectedEvent)
       if (!selectedDays.includes(this.dataset.day))
         selectedDays.push(this.dataset.day);
 
@@ -124,7 +123,6 @@ function daysInMonth(month, year) {
 }
 $(document).on("click", ".btn-primary, .btn-secondary", function prompt() {
   selectedEvent = "";
-  console.log(selectedEvent)
 
 })
 window.addEventListener('load', function () {

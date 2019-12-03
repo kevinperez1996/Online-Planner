@@ -12,7 +12,6 @@ var currentUser = "";
     $(document).ready(function () {
         $.get("/api/user_data").then(function (data) {
             currentUser = data.id;
-            console.log(currentUser);
             return currentUser;
         });
     });
@@ -22,8 +21,7 @@ $(document).on("click", ".delete", function deletePlan() {
 
     var currentPlan = $(this).attr("id");
 
-    alert("deleted");
-    console.log(currentPlan)
+    // console.log(currentPlan)
 
     $.ajax({
         method: "DELETE",
@@ -38,14 +36,11 @@ $(document).on("click", ".delete", function deletePlan() {
 
 $(document).on("click", "#edit2", function editPlan() {
 
-    console.log(currentID);
-
     var newPlan = {
         title: $("#title2").val().trim(),
         type: $("#type2").val().trim(),
         time: $("#time2").val().trim(),
         description: $("#comments2").val().trim(),
-        eventDate: selectedEvent,
         id: currentID
     }
 
@@ -72,7 +67,7 @@ $("#save").on("click", function (event) {
         eventDate: selectedEvent
     }
 
-    console.log(newPlan);
+    // console.log(newPlan);
 
     $.ajax("/api/planner", {
         type: "POST",
@@ -90,7 +85,6 @@ var testDiv = $(".testDiv")
 function getPlans() {
     $.get("api/plans", function (data) {
 
-        console.log(data);
         initializeRows(data);
 
     });
@@ -115,17 +109,6 @@ $(document).on("click", ".edit", function () {
     currentID = $(this).attr("id");
 })
 
-// function handlePlanDelete (data){
-//     var currentPlan = $(this).val("id")
-//     .parent()
-//     .parent()
-//     .data("plans");
-//     console.log(currentPlan);
-//     // deletePlan(currentPlan);
-// }
-
-
-
 
 function createNewRow(data) {
     var newPostCard = $("<div>");
@@ -144,21 +127,25 @@ function createNewRow(data) {
     editBtn.addClass("edit btn btn-secondary");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
+    var newPostTime = $("<small>")
     var newPostCategory = $("<h5>");
-    newPostCategory.text(data.type);
+    newPostCategory.text("Type: " + data.type);
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");
-    newPostTitle.text(data.title + " ");
+    var newPostBody2 = $("<h5>")
+    newPostTitle.text(data.title);
+    newPostBody2.text("Description: ");
     newPostBody.text(data.description);
-    // var formattedDate = new Date(data.date);
-    // formattedDate = moment(formattedDate).format("L");
-    newPostDate.text(data.eventDate);
+    newPostDate.text(" | " + data.eventDate);
+    newPostTime.text(" | "  + moment(data.time, "HH:mm").format("hh:mm a") + " | ");
     newPostTitle.append(newPostDate);
+    newPostTitle.append(newPostTime);
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostCategory);
+    newPostCardBody.append(newPostBody2);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
