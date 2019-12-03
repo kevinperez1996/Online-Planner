@@ -51,8 +51,10 @@ module.exports = function(app) {
   });
 
 
-  app.get("/api/plans", function (req, res){
+  app.get("/api/plans/", function (req, res){
+
     db.Plan.findAll({}).then(function (data){
+      console.log(data);
       res.json(data);
     });
   });

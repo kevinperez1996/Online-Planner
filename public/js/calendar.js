@@ -2,15 +2,6 @@
 // This file just does a GET request to figure out which user is logged in
 // and updates the HTML on the page
 
-$(document).ready(function () {
-
-  $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email);
-  });
-
-});
-
-
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var startYear = 2018;
 var endYear = 2025;
@@ -91,7 +82,7 @@ function loadCalendarDays() {
     d.addEventListener('click', function () {
       this.classList.toggle('selected');
       selectedEvent = this.id
-      alert(selectedEvent) 
+      alert(selectedEvent)
       if (!selectedDays.includes(this.dataset.day))
         selectedDays.push(this.dataset.day);
 
